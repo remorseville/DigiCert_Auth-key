@@ -49,18 +49,17 @@ def less_then_check(base36_hash):
 
 \# HMAC.SHA256 &gt; base10 &gt; base36 Hashing &gt; String length check
 def hashing(auth_key, csr, timestamp):
-
 	    secret = timestamp + csr
 	    digest = hmac.new(bytes(auth_key, encoding='utf-8'), msg=bytes(secret, encoding='utf-8'), digestmod=hashlib.sha256).hexdigest()
 	    print("SHA256 Hex: ", digest, "\n")
 
-    decimal_hash = int(digest, 16)
-    print("Base10 Decimal Hash: ", decimal_hash, "\n")
+decimal_hash = int(digest, 16)
+print("Base10 Decimal Hash: ", decimal_hash, "\n")
 
-    base36_hash = int_to_base36(decimal_hash)
-    print("Base36 Hash: ", base36_hash, "\n")
+base36_hash = int_to_base36(decimal_hash)
+print("Base36 Hash: ", base36_hash, "\n")
 
-    return less_then_check(base36_hash)
+return less_then_check(base36_hash)
 
 
 \# Combining of the timestamp and base36 hash &gt; Request Token
