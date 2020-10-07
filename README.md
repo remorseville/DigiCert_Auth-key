@@ -15,12 +15,9 @@
 <p>Here’s what the process looks like in Python:</p>
 <p><a href="https://github.com/remorseville/DigiCert_Auth-key/blob/main/auth-key_script.py">auth_key-script.py</a></p>
 <p>Example of the output:</p>
-<pre><code>SHA256 Hex:  2ea087548b2a2XXXXXXXXXX836266ed9e5c8e2b3f0XXX 
-
-Base10 Decimal Hash:  2109002058024XXXXXXXXXX069226682708402040264171539245279903731XXXXX 
-
-Base36 Hash:  15U4B17YMW9XXXXXXXXXXMFFUHTYB2Z0FA72JB5MWMI8 
-
+<pre><code>SHA256 Hex:  2ea087548b2a2XXXXXXXXXX836266ed9e5c8e2b3f0XXX
+Base10 Decimal Hash:  2109002058024XXXXXXXXXX069226682708402040264171539245279903731XXXXX
+Base36 Hash:  15U4B17YMW9XXXXXXXXXXMFFUHTYB2Z0FA72JB5MWMI8
 Request Token:  20210812000000XXXXXXXXXXtvh6o11e6fzmffuhtyb2z0fa72jb5XXXXX
 </code></pre>
 <p>From here the token can be used to prepare the DNS or HTTP method and continue to submit the order! (<a href="https://dev.digicert.com/workflows/dv-certificate-immediate-issuance/#dns-txt">https://dev.digicert.com/workflows/dv-certificate-immediate-issuance/#dns-txt</a>)</p>
