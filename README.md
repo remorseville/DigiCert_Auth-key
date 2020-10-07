@@ -69,8 +69,6 @@ def request_token(auth_key, csr, timestamp):
     # Construct final request token
     my_token = timestamp + valid_hash
     print("Request Token: ", my_token.lower())
-
-
 request_token(auth_key, csr, timestamp)
 </code></pre>
 <p>Example of the output:</p>
