@@ -65,7 +65,7 @@ def hashing(auth_key, csr, timestamp):
     return less_then_check(base36_hash)
 
 
-### Combining of the timestamp and base36 hash &gt; Request Token
+\### Combining of the timestamp and base36 hash &gt; Request Token
 def request_token(auth_key, csr, timestamp):
 
     valid_hash = hashing(auth_key, csr, timestamp)
