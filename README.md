@@ -22,7 +22,7 @@ auth_key = '4D0404C6_BRING_YOUR_OWN_KEY_3391ED9C8740C855391FBA'
 \# CSR is formatted as a single string. No ---Begin Certificate Request-- or ---End Certificate Request--
 csr = 'MIIElzCCAn8CAQAwJjELMAkGA1UEBhMCVVMxFzAVBgNVBAMMDmludmVydq3+JzeqUpO4krTlJNQDc4+EanNTgAP/RvAlIpxsHMFZHxExR64twCxlSLtCl3n6TIjpCERgCMYjv5LykPByplgfLQYT9txeIYMw7PilyM9wn1TDaxxfE----omitted----UjkFpdMHryNRXvyTvjYFp5oB+y5zUawxeqpaU1Kr1H+lP4fsFRbTE8iPf7AGwGaOsDK4+ru1HC8dgwid3k3qrkkrTxHJhHh3YTmK93me56yNgnLX7H+8V7eXGHEfP/cYVOL2Ju5TmopyF2szLiVxXeKZksZL4fchFnGFSRZb5xFQyVNTwbU2V'
 
-### Format YYYY/MM/DD/hh/mm/ss
+\# Format YYYY/MM/DD/hh/mm/ss
 timestamp = '20210812000000'
 
 
