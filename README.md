@@ -16,17 +16,17 @@
 <pre><code>import hmac
 import hashlib
 
-### DigiCert AuthKey
+\# DigiCert AuthKey
 auth_key = '4D0404C6_BRING_YOUR_OWN_KEY_3391ED9C8740C855391FBA'
 
-### CSR is formatted as a single string. No ---Begin Certificate Request-- or ---End Certificate Request--
+\# CSR is formatted as a single string. No ---Begin Certificate Request-- or ---End Certificate Request--
 csr = 'MIIElzCCAn8CAQAwJjELMAkGA1UEBhMCVVMxFzAVBgNVBAMMDmludmVydq3+JzeqUpO4krTlJNQDc4+EanNTgAP/RvAlIpxsHMFZHxExR64twCxlSLtCl3n6TIjpCERgCMYjv5LykPByplgfLQYT9txeIYMw7PilyM9wn1TDaxxfE----omitted----UjkFpdMHryNRXvyTvjYFp5oB+y5zUawxeqpaU1Kr1H+lP4fsFRbTE8iPf7AGwGaOsDK4+ru1HC8dgwid3k3qrkkrTxHJhHh3YTmK93me56yNgnLX7H+8V7eXGHEfP/cYVOL2Ju5TmopyF2szLiVxXeKZksZL4fchFnGFSRZb5xFQyVNTwbU2V'
 
 ### Format YYYY/MM/DD/hh/mm/ss
 timestamp = '20210812000000'
 
 
-### Converts a positive integer into a base36 string
+\# Converts a positive integer into a base36 string
 def int_to_base36(num):
     assert num &gt;= 0
     digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -37,7 +37,7 @@ def int_to_base36(num):
     return res
 
 
-### If base36_hash length is &lt; 50, prepend with zeros
+\# If base36_hash length is &lt; 50, prepend with zeros
 def less_then_check(base36_hash):
     for i in range(0, len(base36_hash)):
         if not len(base36_hash) == 50:
@@ -47,7 +47,7 @@ def less_then_check(base36_hash):
     return base36_hash
 
 
-### HMAC.SHA256 &gt; base10 &gt; base36 Hashing &gt; String length check
+\# HMAC.SHA256 &gt; base10 &gt; base36 Hashing &gt; String length check
 def hashing(auth_key, csr, timestamp):
 
     secret = timestamp + csr
@@ -65,7 +65,7 @@ def hashing(auth_key, csr, timestamp):
     return less_then_check(base36_hash)
 
 
-\### Combining of the timestamp and base36 hash &gt; Request Token
+\# Combining of the timestamp and base36 hash &gt; Request Token
 def request_token(auth_key, csr, timestamp):
 
     valid_hash = hashing(auth_key, csr, timestamp)
