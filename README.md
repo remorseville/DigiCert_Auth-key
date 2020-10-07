@@ -49,9 +49,7 @@ def less_then_check(base36_hash):
 
 \# HMAC.SHA256 &gt; base10 &gt; base36 Hashing &gt; String length check
 def hashing(auth_key, csr, timestamp):
-
     secret = timestamp + csr
-    #print("Encrypted Content: ", secret, "\n")
 
     digest = hmac.new(bytes(auth_key, encoding='utf-8'), msg=bytes(secret, encoding='utf-8'), digestmod=hashlib.sha256).hexdigest()
     print("SHA256 Hex: ", digest, "\n")
