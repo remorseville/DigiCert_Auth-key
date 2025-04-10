@@ -1,0 +1,48 @@
+name: Code Signing Template
+ 
+on: 
+  workflow_dispatch:
+ 
+jobs:
+  release:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [windows-latest]
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4 
+     
+      - name: Install DigiCert Client tools from Github Custom Actions marketplace
+        id: Digicert Code Signing Snippet
+        uses: digicert/ssm-code-signing@v1.0.0
+   
+      - name: Set up certificate 
+        run: | 
+          echo "${{ secrets.SM_CLIENT_CERT_FILE_B64 }}" | base64 --decode > /d/Certificate_pkcs12.p12 
+        shell: bash  
+        
+      - name: Set variables 
+        id: variables 
+        run: | 
+          echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT 
+          echo "SM_HOST=${{ secrets.SM_HOST }}" >> "$GITHUB_ENV" 
+          echo "SM_API_KEY=${{ secrets.SM_API_KEY }}" >> "$GITHUB_ENV" 
+          echo "SM_CLIENT_CERT_FILE=D:\\Certificate_pkcs12.p12" >> "$GITHUB_ENV" 
+          echo "SM_CLIENT_CERT_PASSWORD=${{ secrets.SM_CLIENT_CERT_PASSWORD }}" >> "$GITHUB_ENV" 
+        shell: bash
+
+      - name: Signing using certificate fingerprint      
+        run: |
+           smctl sign --fingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} --input path/to/unsignedfile.extension --config-file path/to/pkcs11properties.cfg
+        shell: cmd
+
+      
+      - name: Signing using keypair alias
+        run: |
+           smctl sign --keypair-alias YourKeypairAlias --input path/to/unsignedfile.extension --config-file path/to/pkcs11properties.cfg
+        shell: cmd
+
+        
