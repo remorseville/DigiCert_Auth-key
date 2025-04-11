@@ -33,15 +33,13 @@ jobs:
           echo "SM_CLIENT_CERT_PASSWORD=${{ secrets.SM_CLIENT_CERT_PASSWORD }}" >> "$GITHUB_ENV" 
         shell: bash
 
-      - name: Signing using certificate fingerprint      
+      - name: Healthcheck      
         run: |
-           smctl sign --fingerprint ${{ secrets.SM_CODE_SIGNING_CERT_SHA1_HASH }} --input path/to/unsignedfile.extension --config-file path/to/pkcs11properties.cfg
+           smctl healthcheck
         shell: cmd
 
       
-      - name: Signing using keypair alias
+      - name: Windows CertSync
         run: |
-           smctl sign --keypair-alias YourKeypairAlias --input path/to/unsignedfile.extension --config-file path/to/pkcs11properties.cfg
+           smctl windows certsync
         shell: cmd
-
-        
